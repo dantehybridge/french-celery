@@ -1,7 +1,45 @@
 ﻿Random random = new Random();
 
+int maxLengthOfCode = 6;
+
+string[] ids = new string[4];
+string[] sAccess = { "", "", "", "", "", "" };
+string[] letters = { "A", "B", "C", "D", "E", "F" };
+
+/* int amountOfLettersInAccess = 1;
+while (amountOfLettersInAccess % 2 != 0) {
+    amountOfLettersInAccess = random.Next(maxLengthOfCode);
+}
+Console.WriteLine($"Letters In Access: {amountOfLettersInAccess}");
+
+int amountOfNumbersInAccess = maxLengthOfCode - amountOfLettersInAccess;
+Console.WriteLine($"Numbers In Access: {amountOfNumbersInAccess}"); */
+
+for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < maxLengthOfCode; j++) {        
+        int digit = random.Next(10); // WHAT we are saving "digit" with.
+        //int indexLetter = random.Next(maxLengthOfCode); 
+        int indexAccess = random.Next(maxLengthOfCode); // WHERE we are saving "digit".
+
+        if(sAccess[indexAccess] == "") {
+            sAccess[indexAccess] = $"{digit}";
+        } else {
+            j--;
+        }
+    }
+
+    string id = string.Join("", sAccess);
+    ids[i] = id;
+
+    for (int k = 0; k < maxLengthOfCode; k++) {
+        sAccess[k] = "";
+    }
+}
+
+// Randomly generate the scores per course, then calculate its average. Also, assign the grade letter corresponding to the average of the scores per student.
 int amountOfCourses = 5;
 
+string[] viewStudentCodes = { "0", "0", "0", "0" };
 string[] viewStudentScore = { "0", "0", "0", "0" };
 string[] editStudentGrade = { "F", "F", "F", "F" };
 string[] viewStudentNames = { "Jane", "John", "Jill", "Jack" };
@@ -77,12 +115,12 @@ for (int i = 0; i < amountOfCourses - 1; i++)
     viewStudentScore[i] = $"{total}";
 }
 
-Console.WriteLine("\nStudent\t\tGrade\n");
+Console.WriteLine("\nID\tStudent\t\tGrade\n");
 
 int turn = 0;
 foreach (string name in viewStudentNames)
 {
-    Console.WriteLine($"{name}:\t\t{viewStudentScore[turn]}\t{editStudentGrade[turn]}");
+    Console.WriteLine($"{ids[turn]}\t{name}\t\t{viewStudentScore[turn]}\t{editStudentGrade[turn]}");
     turn++;
 }
 
