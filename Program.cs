@@ -1,57 +1,89 @@
-﻿using System;
+﻿Random random = new Random();
 
-// initialize variables - graded assignments 
-int currentAssignments = 5;
+int amountOfCourses = 5;
 
-int sophia1 = 90;
-int sophia2 = 86;
-int sophia3 = 87;
-int sophia4 = 98;
-int sophia5 = 100;
+string[] viewStudentScore = { "0", "0", "0", "0" };
+string[] editStudentGrade = { "F", "F", "F", "F" };
+string[] viewStudentNames = { "Jane", "John", "Jill", "Jack" };
 
-int andrew1 = 92;
-int andrew2 = 89;
-int andrew3 = 81;
-int andrew4 = 96;
-int andrew5 = 90;
+decimal[] editStudentScore = { 0, 0, 0, 0 };
 
-int emma1 = 90;
-int emma2 = 85;
-int emma3 = 87;
-int emma4 = 98;
-int emma5 = 68;
+for (int i = 0; i < amountOfCourses - 1; i++)
+{
+    int score = 0;
+    string grade = "F";
 
-int logan1 = 90;
-int logan2 = 95;
-int logan3 = 87;
-int logan4 = 88;
-int logan5 = 96;
+    for (int j = 0; j < amountOfCourses - j; j++)
+    {
+        score += random.Next(59, 101);
+    }
 
-int sophiaSum = 0;
-int andrewSum = 0;
-int emmaSum = 0;
-int loganSum = 0;
+    int total = (score + 100) / amountOfCourses;
 
-decimal sophiaScore;
-decimal andrewScore;
-decimal emmaScore;
-decimal loganScore;
+    if (total >= 90)
+    {
+        grade = "A";
 
-sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
-andrewSum = andrew1 + andrew2 + andrew3 + andrew4 + andrew5;
-emmaSum = emma1 + emma2 + emma3 + emma4 + emma5;
-loganSum = logan1 + logan2 + logan3 + logan4 + logan5;
+        if (total >= 97)
+        {
+            grade += "+";
+        }
+        else if (total <= 92)
+        {
+            grade += "-";
+        }
+    }
+    else if (total >= 80 && total <= 89)
+    {
+        grade = "B";
 
-sophiaScore = (decimal)sophiaSum / currentAssignments;
-andrewScore = (decimal)andrewSum / currentAssignments;
-emmaScore = (decimal)emmaSum / currentAssignments;
-loganScore = (decimal)loganSum / currentAssignments;
+        if (total >= 87)
+        {
+            grade += "+";
+        }
+        else if (total <= 82)
+        {
+            grade += "-";
+        }
+    }
+    else if (total >= 70 && total <= 79)
+    {
+        grade = "C";
 
-Console.WriteLine("Student\t\tGrade\n");
-Console.WriteLine("Sophia:\t\t" + sophiaScore + "\tA-");
-Console.WriteLine("Andrew:\t\t" + andrewScore + "\tB+");
-Console.WriteLine("Emma:\t\t" + emmaScore + "\tB");
-Console.WriteLine("Logan:\t\t" + loganScore + "\tA-");
+        if (total >= 77)
+        {
+            grade += "+";
+        }
+        else if (total <= 72)
+        {
+            grade += "-";
+        }
+    }
+    else if (total >= 60 && total <= 69)
+    {
+        grade = "D";
 
-Console.WriteLine("Press the Enter key to continue");
-Console.ReadLine();
+        if (total >= 67)
+        {
+            grade += "+";
+        }
+        else if (total <= 62)
+        {
+            grade += "-";
+        }
+    }
+    editStudentGrade[i] = grade;
+    editStudentScore[i] = total;
+    viewStudentScore[i] = $"{total}";
+}
+
+Console.WriteLine("\nStudent\t\tGrade\n");
+
+int turn = 0;
+foreach (string name in viewStudentNames)
+{
+    Console.WriteLine($"{name}:\t\t{viewStudentScore[turn]}\t{editStudentGrade[turn]}");
+    turn++;
+}
+
+
