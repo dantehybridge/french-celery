@@ -1,7 +1,7 @@
 
 # Challenge Project - Create and run simple C# console applications (Get started with C#, Part 2)
 
-In this callenge project, you'll use Visual Studio Code to develop a C# application. The application will use arrays, foreach statements, and if statements to implement a list of design parameters. You'll begin by creating the array variables that contain your application data. To complete the project, you'll develop foreach and if statements that implement the application design goals.
+In this challenge project, you'll use Visual Studio Code to develop a C# application. The application will use arrays, `foreach` statements, and `if` statements to implement a list of design parameters. You'll begin by creating the array variables that contain your application data. To complete the project, you'll develop `foreach` and `if` statements that implement the application design goals.
 
 ## Project overview
 You're developing a Student Grading application that automates the calculation of grades for each student in a class. The parameters for your application are:
@@ -18,7 +18,7 @@ You're developing a Student Grading application that automates the calculation o
 - Your application needs to output/display each student’s name and formatted grade.
 - Your application needs to support adding other students and scores with minimal impact to the code.
 
-The Starter code project for this Guided project module includes a Program.cs file that provides the following code features:
+The Starter code project for this challenge project module includes a Program.cs file that provides the following code features:
 - The code declares variables used to define student names and individual exam scores for each student.
 - The code includes the variables and algorithms used to sum the exam scores and calculate the average exam score for each student.
 - The code includes a hard coded letter grade that the developer must apply manually.
@@ -26,11 +26,11 @@ The Starter code project for this Guided project module includes a Program.cs fi
 
 Your goal is to update the existing code to include the following features:
 - Use arrays to store student names and assignment scores.
-- Use a foreach statement to iterate through the student names as an outer program loop.
-- Use an if statement within the outer loop to identify the current student name and access that student's assignment scores.
-- Use a foreach statement within the outer loop to iterate through the assignment scores array and sum the values.
+- Use a `foreach` statement to iterate through the student names as an outer program loop.
+- Use an `if` statement within the outer loop to identify the current student name and access that student's assignment scores.
+- Use a `foreach` statement within the outer loop to iterate through the assignment scores array and sum the values.
 - Use an updated algorithm within the outer loop to calculate the average exam score for each student.
-- Use an if-elseif-else construct within the outer loop to evaluate the average exam score and assign a letter grade automatically.
+- Use an `if-elseif-else` construct within the outer loop to evaluate the average exam score and assign a letter grade automatically.
 - Integrate extra credit scores when calculating the student's final score and letter grade as follows:
     - Your code must detect extra credit assignments based on the number of elements in the student's scores array.
     - Your code must apply the 10% weighting factor to extra credit assignments before adding extra credit scores to the sum of exam scores.
