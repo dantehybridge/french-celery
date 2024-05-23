@@ -2,9 +2,9 @@
 
 int maxLengthOfCode = 6;
 
-string[] ids = new string[4];
-string[] sAccess = { "", "", "", "", "", "" };
-string[] letters = { "A", "B", "C", "D", "E", "F" };
+string[] sAccess = new string[4]; // WHAT is each student's access or ID; does not reset.
+string[] dAccess = { "", "", "", "", "", "" }; // What is each digit per student's access or ID; does reset each iteration.
+// string[] letters = { "A", "B", "C", "D", "E", "F" };
 
 /* int amountOfLettersInAccess = 1;
 while (amountOfLettersInAccess % 2 != 0) {
@@ -21,18 +21,18 @@ for (int i = 0; i < 4; i++) {
         //int indexLetter = random.Next(maxLengthOfCode); 
         int indexAccess = random.Next(maxLengthOfCode); // WHERE we are saving "digit".
 
-        if(sAccess[indexAccess] == "") {
-            sAccess[indexAccess] = $"{digit}";
+        if(dAccess[indexAccess] == "") {
+            dAccess[indexAccess] = $"{digit}";
         } else {
             j--;
         }
     }
 
-    string id = string.Join("", sAccess);
-    ids[i] = id;
+    string id = string.Join("", dAccess);
+    sAccess[i] = id;
 
     for (int k = 0; k < maxLengthOfCode; k++) {
-        sAccess[k] = "";
+        dAccess[k] = "";
     }
 }
 
@@ -120,7 +120,7 @@ Console.WriteLine("\nID\tStudent\t\tGrade\n");
 int turn = 0;
 foreach (string name in viewStudentNames)
 {
-    Console.WriteLine($"{ids[turn]}\t{name}\t\t{viewStudentScore[turn]}\t{editStudentGrade[turn]}");
+    Console.WriteLine($"{sAccess[turn]}\t{name}\t\t{viewStudentScore[turn]}\t{editStudentGrade[turn]}");
     turn++;
 }
 
