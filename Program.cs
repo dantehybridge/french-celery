@@ -1,39 +1,36 @@
 ﻿Random random = new Random();
 
-int maxLengthOfCode = 6;
+int amountOfCodes = 4;
+int lengthOfCodes = 6;
 
-string[] sAccess = new string[4]; // WHAT is each student's access or ID; does not reset.
-string[] dAccess = { "", "", "", "", "", "" }; // What is each digit per student's access or ID; does reset each iteration.
-// string[] letters = { "A", "B", "C", "D", "E", "F" };
+string[] codes = new string[4];
+string[] letters = { "A", "B", "C", "D", "E", "F" };
 
-/* int amountOfLettersInAccess = 1;
-while (amountOfLettersInAccess % 2 != 0) {
-    amountOfLettersInAccess = random.Next(maxLengthOfCode);
-}
-Console.WriteLine($"Letters In Access: {amountOfLettersInAccess}");
+for (int i = 0; i < amountOfCodes; i++)
+{
+    string[] digits = new string[lengthOfCodes]; // The code is set with each iteration
+    int amountOfLettersInCode = random.Next(1, lengthOfCodes); // Each code must have at least ONE letter
 
-int amountOfNumbersInAccess = maxLengthOfCode - amountOfLettersInAccess;
-Console.WriteLine($"Numbers In Access: {amountOfNumbersInAccess}"); */
+    do
+    {
+        int index = random.Next(lengthOfCodes);
+        if (digits[index] == null)
+        {
+            digits[index] = letters[random.Next(letters.Length)];
+            amountOfLettersInCode--;
+        }
+    } while (amountOfLettersInCode != 0);
 
-for (int i = 0; i < 4; i++) {
-    for (int j = 0; j < maxLengthOfCode; j++) {        
-        int digit = random.Next(10); // WHAT we are saving "digit" with.
-        //int indexLetter = random.Next(maxLengthOfCode); 
-        int indexAccess = random.Next(maxLengthOfCode); // WHERE we are saving "digit".
-
-        if(dAccess[indexAccess] == "") {
-            dAccess[indexAccess] = $"{digit}";
-        } else {
-            j--;
+    for (int j = 0; j < lengthOfCodes; j++)
+    {
+        if (digits[j] == null)
+        {
+            digits[j] = random.Next(10).ToString();
         }
     }
 
-    string id = string.Join("", dAccess);
-    sAccess[i] = id;
-
-    for (int k = 0; k < maxLengthOfCode; k++) {
-        dAccess[k] = "";
-    }
+    string code = string.Join("", digits);
+    codes[i] = code;
 }
 
 // Randomly generate the scores per course, then calculate its average. Also, assign the grade letter corresponding to the average of the scores per student.
@@ -120,7 +117,7 @@ Console.WriteLine("\nID\tStudent\t\tGrade\n");
 int turn = 0;
 foreach (string name in viewStudentNames)
 {
-    Console.WriteLine($"{sAccess[turn]}\t{name}\t\t{viewStudentScore[turn]}\t{editStudentGrade[turn]}");
+    Console.WriteLine($"{codes[turn]}\t{name}\t\t{viewStudentScore[turn]}\t{editStudentGrade[turn]}");
     turn++;
 }
 
